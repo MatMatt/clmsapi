@@ -1,4 +1,4 @@
-#' Extract information from API reply
+#' Extract information from API reply.
 #'
 #' @description
 #' Extract file location information (sources and dests) from the API reply
