@@ -5,7 +5,7 @@ Before you download data you need to register here: https://cryo.land.copernicus
 
 CLMS offers also a WMS frontend, see: https://cryo.land.copernicus.eu/browser.
 
-**The package is not at all mature yet, changes in methods and names are probably.**   
+**The package is not at all mature yet, changes in methods and names are to be expected!**   
 **So far tested only on Linux**
 
 Currently working is: 
