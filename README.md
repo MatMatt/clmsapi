@@ -5,9 +5,10 @@ Before you download data you need to register here: https://cryo.land.copernicus
 
 CLMS offers also a WMS frontend, see: https://cryo.land.copernicus.eu/browser.
 
-The package is not at all mature yet, changes in methods and names are probably. 
+**The package is not at all mature yet, changes in methods and names are probably.**   
+**So far tested only on Linux**
 
-currently working is: 
+Currently working is: 
 
 ?composeUrl  
 x <- composeUrl(productType = 'FSC', productIdentifier = 'T29UNV', startDate='2020-07-01', completionDate=Sys.Date())
@@ -19,5 +20,10 @@ res <- downloader(x, user='yourUser', password='yourPassword')
 res  
 
 
+### Package downloads
+
+This month      | In total
+--------------- | -----------
+![month](https://cranlogs.r-pkg.org/badges/clmsapi) | ![total](https://cranlogs.r-pkg.org/badges/clmsapi)
 
 
