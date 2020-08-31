@@ -2,10 +2,11 @@ Package: clmsapi
 Type: Package
 Title: Copernicus Land Monitoring Service API client 
 Version: 0.1.0
-Author: Matteo Mattiuzzi
-Maintainer: The package maintainer <matteo@mattiuzzi.com>
-Description: Packege to query the REST API server on WEkEO of the Copernicus Land Monitoring Service
-License: CC-BY
+Authors@R: person("Matteo", "Mattiuzzi", email = "matteo@mattiuzzi.com", role = c("aut", "cre"))
+Description: Package to query the REST API server of the Copernicus Land Monitoring Service on WEkEO. 
+Imports:
+  rjson
+License: CC BY 4.0
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1

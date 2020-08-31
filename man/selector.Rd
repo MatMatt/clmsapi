@@ -7,8 +7,8 @@
 selector(x, as.data.frame = FALSE)
 }
 \arguments{
-\item{x}{\code{character}. Either the \code{queryURL} from the REST query in the portal
-or the result of the \code{\link{composeQuery}}}
+\item{x}{\code{character}. The return of \code{\link{composeUrl}} or the REST
+query generated from the portal \url{https://cryo.land.copernicus.eu/finder/}.}
 
 \item{as.data.frame}{\code{logical}. FALSE. If true the return is converted to
 a data.frame}
@@ -20,6 +20,10 @@ a data.frame}
 Extract file location information (sources and dests) from the API reply
 }
 \examples{
+x <- composeUrl(productType = 'FSC', productIdentifier = 'T29UNV')
+stopifnot(require(rjson))
+x <- fromJSON(file = x)
+selector(x)
 
 }
 \author{

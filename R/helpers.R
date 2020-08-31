@@ -1,80 +1,97 @@
-isTif <- function(x)
-{
-  ext <- raster:::extension(x)
-  return(ext == '.tif')
-}
-
-extractFilename <- function(x)
-{
-  if(!is.null(dim(x)))
-  {
-    x <- x[,1]
-  }
-
-  for (i in 1:length(x))
-  { # i=1
-    if(isTif(x[i]))
-    {
-      x[i] <- basename(x[i])
-    } else
-    {
-      x[i] <- strsplit(as.character(x[i]),';')[[1]][2]
-    }
-  }
-  return(x)
-}
-
-extractTiles <- function(x, unique = FALSE)
-{
-  x <- getFilename(x)
-  for (i in 1:length(x))
-  { # i=1
-    x[i] <- strsplit(x[i],split = '_')[[1]][4]
-  }
-
-  if(isTRUE(unique))
-  {
-    x <- unique(x)
-  }
-  return(x)
-}
-
-#' Helper Functions
+#' Checks the avialability and validity of ZIP's
 #' @description
-#' This function extracts the Date from CLMS filenames and from paths returned by the API.
+#' This function uses system calls of \code{unzip -t} to check the validity of
+#' zip archives
 #'
-#' @param x \code{character}, vector with filenames and paths returned by the server.
-#' @param unique \code{logical}. \code{FALSE}. Should the result be collapsed using \code{\link{unique()}}
-#' @param as.POSIXlt \code{logical}. \code{TRUE}. Convert character string be converted to \code{POSIXlt}?
+#' @param x \code{character}, vector with full path/filename.zip.
 #'
 #' @return
-#' If \code{as.POSIXlt=TRUE} the function returns class \code{POSIXlt}, else a \code{character}.
+#' \code{logical vector} with \code{TRUE} if a zip archive exists & is not corrupt
+#' according to \code{unzip -t} call.
 #'
 #' @author
 #' Matteo Mattiuzzi
 #'
-#' @seealso
-#' \code{\link{as.POSIXlt}}
-#'
-#' @examples
-#'
-#' @export extractDate
-#' @name extractDate
+#' @export checkZips
+#' @name checkZips
 
-extractDate <- function(x, unique = FALSE, as.POSIXlt=TRUE)
+
+checkZips <- function(x)
 {
-  x <- extractFilename(x)
-  for (i in 1:length(x))
-  { # i=1
-    x[i] <- strsplit(x[i],split = '_')[[1]][2]
+  cmdunzip <- Sys.which("unzip")
+
+  out <- exists <- file.exists(x)
+
+  # for all that exist do the test.
+  for (j in seq_along(x[exists]))
+  { # j=1
+    res <- system(paste0(cmdunzip,' -t ', x[exists][j]), intern = TRUE)
+    res <- res[length(res)]
+
+    if (length(grep(res, pattern = 'No errors detected'))==0)
+    {
+      out[exists][j] <- FALSE
+    }
   }
-  if(unique)
-  {
-    x <- unique(x)
-  }
-  if(as.POSIXlt)
-  {
-    x <- as.POSIXlt(x, format =  "%Y%m%dT%H%M%S") # as.POSIXlt("2012-04-12T19:02:32Z", format="%Y-%m-%dT%H:%M:%SZ")
-  }
-  return(x)
+  return(out)
 }
+
+# extractDate <- function(x, unique = FALSE, as.POSIXlt=TRUE)
+# {
+#   x <- extractFilename(x)
+#   for (i in 1:length(x))
+#   { # i=1
+#     x[i] <- strsplit(x[i],split = '_')[[1]][2]
+#   }
+#   if(unique)
+#   {
+#     x <- unique(x)
+#   }
+#   if(as.POSIXlt)
+#   {
+#     x <- as.POSIXlt(x, format =  "%Y%m%dT%H%M%S") # as.POSIXlt("2012-04-12T19:02:32Z", format="%Y-%m-%dT%H:%M:%SZ")
+#   }
+#   return(x)
+# }
+# isTif <- function(x)
+# {
+#   ext <- raster::extension(x)
+#   return(ext == '.tif')
+# }
+#
+# extractFilename <- function(x)
+# {
+#   if(!is.null(dim(x)))
+#   {
+#     x <- x[,1]
+#   }
+#
+#   for (i in 1:length(x))
+#   { # i=1
+#     if(isTif(x[i]))
+#     {
+#       x[i] <- basename(x[i])
+#     } else
+#     {
+#       x[i] <- strsplit(as.character(x[i]),';')[[1]][2]
+#     }
+#   }
+#   return(x)
+# }
+#
+# extractTiles <- function(x, unique = FALSE)
+# {
+#   x <- getFilename(x)
+#   for (i in 1:length(x))
+#   { # i=1
+#     x[i] <- strsplit(x[i],split = '_')[[1]][4]
+#   }
+#
+#   if(isTRUE(unique))
+#   {
+#     x <- unique(x)
+#   }
+#   return(x)
+# }
+#
+
