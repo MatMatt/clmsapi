@@ -1,9 +1,9 @@
 Package: clmsapi
 Type: Package
-Title: Copernicus Land Monitoring Service API client 
+Title: Copernicus Land Monitoring Service API Client 
 Version: 0.1.0
 Authors@R: person("Matteo", "Mattiuzzi", email = "matteo@mattiuzzi.com", role = c("aut", "cre"))
-Description: Package to query the REST API server of the Copernicus Land Monitoring Service on WEkEO. 
+Description: Download Copernicus Land Monitoring Service products by means of REST queries to the HTTP API server: <https://cryo.land.copernicus.eu/resto/api/collections/HRSI/search.json>. 
 Imports:
   rjson
 License: CC BY 4.0
