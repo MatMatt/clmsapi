@@ -29,4 +29,3 @@ This month      | In total
 --------------- | -----------
 ![month](https://cranlogs.r-pkg.org/badges/clmsapi) | ![total](https://cranlogs.r-pkg.org/badges/clmsapi)
 
-![month](http://cran-logs.rstudio.com/badges/clmsapi) 
