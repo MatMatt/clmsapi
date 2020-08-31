@@ -1,5 +1,8 @@
 # clmsapi
 
+[![CRAN_version](http://www.r-pkg.org/badges/version/clmsapi)](https://cran.r-project.org/package=clmsapi)
+[![CRAN_check](https://cranchecks.info/badges/worst/clmsapi)](https://cran.r-project.org/web/checks/check_results_clmsapi.html)
+
 R-Client for accessing the Copernicus Land Monitoring Service REST API on WEkEO. Currenty supported (on server side) are only Data from the High Resolution Snow and Ice Monitoring (https://land.copernicus.eu/pan-european/biophysical-parameters/high-resolution-snow-and-ice-monitoring).
 Before you download data you need to register here: https://cryo.land.copernicus.eu/finder. 
 
