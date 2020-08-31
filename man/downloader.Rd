@@ -29,7 +29,7 @@ This function deals with the authenification and download the files.
 \examples{
 \dontrun{
 x <- composeUrl(productType = 'FSC', productIdentifier = 'T29UNV',
-startDate='2020-07-01', endDate='2020-07-31')
+startDate='2020-07-01', completionDate='2020-07-31')
 if(require(rjson)){
 x <- fromJSON(file = x)
 x <- selector(x)

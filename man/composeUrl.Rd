@@ -10,7 +10,7 @@ composeUrl(
   publishedAfter,
   publishedBefore,
   startDate,
-  endDate,
+  completionDate,
   productIdentifier,
   cloudCover = 100,
   textualSearch,
@@ -29,7 +29,7 @@ composeUrl(
 
 \item{startDate}{\code{character}. Sensing Date after: YYYY-MM-DD}
 
-\item{endDate}{\code{character}. Sensing Date before: YYYY-MM-DD}
+\item{completionDate}{\code{character}. Sensing Date before: YYYY-MM-DD}
 
 \item{productIdentifier}{\code{character}. Find products using elements of the
 filename: FSC_20170913T114531_S2B_T29UNV_V001_0: e.g. FSC_2020, TileID, etc.
