@@ -7,8 +7,8 @@
 #' @param productIdentifier \code{character}. Find products using elements of the
 #' filename: FSC_20170913T114531_S2B_T29UNV_V001_0: e.g. FSC_2020, TileID, etc.
 #' (its not regex though)
-#' @param geometry \code{character}, region of interest, defined as WKT string
-#' (POINT, POLYGON, etc.) in WGS84 projection.
+#' @param geometry \code{character}, NOT IMPLEMENTED YET. WKT string derining 
+#' the area of interest. (POINT, POLYGON, etc.) in WGS84 projection.
 #' @param publishedAfter \code{character}. Data published after: YYYY-MM-DD
 #' @param publishedBefore \code{character}. Data published before: YYYY-MM-DD
 #' @param startDate \code{character}. Sensing Date after: YYYY-MM-DD
@@ -108,11 +108,22 @@ composeUrl <- function(productType=c('FSC','RLIE','PSA','PSA-LAEA','ARLIE'), geo
     q <- NULL
   }
 
-  maxRecords <- paste0('maxRecords=',maxRecords,'&')
+  maxRecords <- paste0('maxRecords=', maxRecords,'&')
 
+  # if(!missing(geometry))
+  # {
+  #   
+  #   geometry <- paste0("geometry=",gsub(geometry, pattern = ' ', replacement = '+'), "&")
+  # } else
+  # {
+  #   geometry <- NULL
+  # }
+  
+  
   #geometry=POLYGON((13.990623171919392+48.33851249150035%2C14.65623466020064+48.33851249150035%2C14.73610803879439+48.03230693902546%2C13.990623171919392+48.054557235193585%2C13.990623171919392+48.33851249150035))
   #geometry=POINT(14.360037547915486+48.30531787964546)
-
+  # geometry=POINT(lon+lat)
+  
   stat <- paste0(HRSIroot,'?',maxRecords)
   url  <- paste0(stat,productIdentifier,startDate,completionDate, publishedAfter,publishedBefore,productType,q,staticP)
 

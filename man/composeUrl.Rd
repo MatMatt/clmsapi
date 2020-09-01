@@ -20,8 +20,8 @@ composeUrl(
 \arguments{
 \item{productType}{\code{character}. One of: FSC, RLIE, PSA, PSA-LAEA, ARLIE}
 
-\item{geometry}{\code{character}, region of interest, defined as WKT string
-(POINT, POLYGON, etc.) in WGS84 projection.}
+\item{geometry}{\code{character}, NOT IMPLEMENTED YET. WKT string derining 
+the area of interest. (POINT, POLYGON, etc.) in WGS84 projection.}
 
 \item{publishedAfter}{\code{character}. Data published after: YYYY-MM-DD}
 

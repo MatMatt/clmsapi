@@ -2,7 +2,7 @@
 % Please edit documentation in R/urlhandlers.R
 \name{selector}
 \alias{selector}
-\title{Extract information from API reply}
+\title{Extract information from API reply.}
 \usage{
 selector(x, as.data.frame = FALSE)
 }
