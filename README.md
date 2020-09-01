@@ -23,7 +23,7 @@ res <- downloader(x, user='yourUser', password='yourPassword')
 res  
 
 
-### Package downloads
+### Package downloads (CRAN)
 
 This month      | In total
 --------------- | -----------
