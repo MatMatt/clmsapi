@@ -10,7 +10,7 @@ Before you download data you need to register here: https://cryo.land.copernicus
 CLMS offers also a WMS frontend, see: https://cryo.land.copernicus.eu/browser.
 
 **The package is not at all mature yet, changes in methods and names are to be expected!**   
-**So far tested only on Linux**
+**So far tested only on Linux and on Windows**
 
 ### Installation
 To install from GitHub, first install **[devtools](https://cran.r-project.org/package=devtools)** and subsequently run
