@@ -13,10 +13,6 @@ CLMS offers also a WMS frontend, see: https://cryo.land.copernicus.eu/browser.
 **So far tested only on Linux**
 
 ### Installation
-
-**MODIS** can be installed via 
-
-
 To install from GitHub, first install **[devtools](https://cran.r-project.org/package=devtools)** and subsequently run
 
 ```S
