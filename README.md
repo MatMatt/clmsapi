@@ -12,6 +12,18 @@ CLMS offers also a WMS frontend, see: https://cryo.land.copernicus.eu/browser.
 **The package is not at all mature yet, changes in methods and names are to be expected!**   
 **So far tested only on Linux**
 
+### Installation
+
+**MODIS** can be installed via 
+
+
+To install from GitHub, first install **[devtools](https://cran.r-project.org/package=devtools)** and subsequently run
+
+```S
+devtools::install_github("MatMatt/clmsapi", ref = "master")
+
+```
+
 Currently working is: 
 
 ?composeUrl  
