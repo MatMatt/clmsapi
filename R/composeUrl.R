@@ -33,6 +33,7 @@
 composeUrl <- function(productType=c('FSC','RLIE','PSA','PSA-LAEA','ARLIE'), geometry, publishedAfter, publishedBefore, startDate, completionDate, productIdentifier, cloudCover=100, textualSearch, maxRecords = 1000)
 {
 
+  
   # Request URL root
   HRSIroot = 'https://cryo.land.copernicus.eu/resto/api/collections/HRSI/search.json'
 

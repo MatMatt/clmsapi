@@ -68,7 +68,7 @@ downloader <- function(x , rootDir='./', user, password)
       dir.create(dirname(dest[!exists][i]), showWarnings = FALSE, recursive = TRUE)
       url <- paste0(x$downloadUrl[!exists][i],'?token=', token)
       cat(dest[!exists][i],'\n')
-      system(paste(cmdcurl, url, '-o', dest[!exists][i]))
+      system(paste(cmdcurl, url, "-o", path.expand(dest[!exists][i])))
     }
   }
 return(dest)
