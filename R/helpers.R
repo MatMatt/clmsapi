@@ -36,6 +36,85 @@ checkZips <- function(x)
   return(out)
 }
 
+#' Function to convert several extent informations into API parameter 'geometry'
+#' @description
+#' This function will most probably become internal and is meant to convert several
+#' R classes with a geographical extent information into the format as needed by the 
+#' 'geometry' parameter (see value). 
+#'
+#' @param x one of the following classes: \code{Raster} \code{Extent}, \code{sf}
+#' \code{map} or \code{sp}
+#'
+#' @return
+#' \code{character} string in the format: \code{'POINT(lon+lat)'} or 
+#' \code{'POLYGON(lon+lat,lon+lat,lon+lat,....)'}
+#'
+#' @author
+#' Robin Lovelace and Matteo Mattiuzzi
+#'
+#' @export geo2char
+#' @name geo2char
+
+# library(spData)
+# library(sf)
+# #> Linking to GEOS 3.8.0, GDAL 3.0.4, PROJ 7.0.0
+# x_sf = rmapshaper::ms_simplify(lnd[1:3, ], 0.01)
+# class(x_sf)
+# x_sp = sf::as_Spatial(x_sf)
+# class(x_sp)
+
+geo2char = function(x) 
+{
+  # all rasters to a WGS84 extent then  to sp  
+  if(inherits(x = x, what = "Raster"))
+  {
+    if(!raster::isLonLat(x))
+    {
+      x <- raster::projectExtent(x, crs='+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0')
+    }
+    x <- raster::extent(x)
+  }
+  if(inherits(x = x, what = "Extent"))
+  {
+    x <- sp::SpatialPoints(x)
+  }
+  # ###################
+  # # all terra::rast to a WGS84 extent the  to sp  
+  # if(inherits(x = x, what =  "SpatRaster")|is(inherits(x = x, what = "SpatVector"))
+  # {
+  #   x <- rast()
+  #   x <- vect()
+  #     if(!isLonLat(x))
+  #   {
+  #   #  x <- 
+  #       project(x,crs='+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0')
+  #   }
+  #   x <- extent(x)
+  # }
+  # if(inherits(x = x, what = "Extent"))
+  # {
+  #   x <- sp::SpatialPoints(x)
+  # }
+  # ###################
+  
+  if(!inherits(x = x, what = "sf"))
+  {
+    x = sf::st_as_sf(x)
+  }
+  x <- sf::st_transform(x, crs = '+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0')
+  
+  # target string
+  x <- sf::st_as_text(sf::st_geometry(x))
+  
+  # formatting
+  x <- gsub(x, pattern = " \\(", replacement = "(")
+  x <- gsub(x, pattern = ",", replacement = "%2C")
+  x <- gsub(x, pattern = " ", replacement = "+")
+  
+return(x)
+}
+
+
 # extractDate <- function(x, unique = FALSE, as.POSIXlt=TRUE)
 # {
 #   x <- extractFilename(x)
