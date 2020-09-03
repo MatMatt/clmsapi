@@ -3,4 +3,5 @@
 export(checkZips)
 export(composeUrl)
 export(downloader)
+export(geo2char)
 export(selector)
