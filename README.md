@@ -46,10 +46,10 @@ res
 ```
 
 ## Outlook
-**clmsapi** will remmain as modular a possible and not go as far as covering any raster processing functionalities and it will alsways remain a utility package meant access CLSM data. 
-Currently operativ on WEKEO is only the High Resolution Snow and Ice part 1 ([**HR-S&I**](https://land.copernicus.eu/pan-european/biophysical-parameters/high-resolution-snow-and-ice-monitoring)), but soon also the High Resolution Vegetation Phenology and Productivity ([**HR-VPP**](https://land.copernicus.eu/user-corner/technical-library/phenology)) products and by mid 2021 the second part of **HR-S&I** will commence into operative production. Product will be gradually added to **clmsapi** as they become avialable on WEkEO. 
+**clmsapi** will remain a modular utility package and most probably not go as far as covering any raster processing functionalities.
+Currently operativ on WEKEO is only the **High Resolution Snow and Ice part 1** ([HR-S&I](https://land.copernicus.eu/pan-european/biophysical-parameters/high-resolution-snow-and-ice-monitoring)). In 2021 two more product will commence on WEkEO, (1) the **High Resolution Vegetation Phenology and Productivity** ([HR-VPP](https://land.copernicus.eu/user-corner/technical-library/phenology)) and (2) the second part of **HR-S&I**. Products will be gradually added to **clmsapi** as they become avialable on WEkEO. 
 
-The main part covered by this package will remain the connection to the API, and the personal local data mirrow. You will be able to ask for the products you need, and **clmsapi** will give you back a ```character``` string with path- and filename of the requested files. This covers (1) API call (works), (2) check the availability and integrity of local files (works), (3) structured download of needed files (a bit hardcoded but works), (4) unzip (todo). Further to be imporved are some comfort functionality, so to allow better translation from R spatial objects into ALI paramters. 
+The main part covered by this package will remain the connection to the API, and the personal local data mirrow. You will be able to ask for the products you need, and **clmsapi** will give you back a ```character``` string with path- and filename of the requested files. This covers (1) API call (works), (2) check the availability and integrity of local files (works), (3) structured download of needed files (a bit hardcoded but works), (4) unzip (todo). Further to be imporved are some comfort functionality, so to allow better translation from R spatial objects (extent information) into API paramter 'geometry'. 
 
 ## Legal notice about Copernicus Data:
 Access to data is based on a principle of full, open and free access as established by the Copernicus data and information policy Regulation (EU) No 1159/2013 of 12 July 2013. This regulation establishes registration and licensing conditions for GMES/Copernicus users and can be found here: http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32013R1159.  
@@ -64,5 +64,3 @@ Free, full and open access to this data set is made on the conditions that:
 This month      | In total
 --------------- | -----------
 ![month](https://cranlogs.r-pkg.org/badges/clmsapi) | ![total](https://cranlogs.r-pkg.org/badges/clmsapi)
-
-9(ly
