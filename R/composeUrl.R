@@ -7,8 +7,7 @@
 #' @param productIdentifier \code{character}. Find products using elements of the
 #' filename: FSC_20170913T114531_S2B_T29UNV_V001_0: e.g. FSC_2020, TileID, etc.
 #' (its not regex though)
-#' @param geometry \code{character}, NOT IMPLEMENTED YET. WKT string derining 
-#' the area of interest. (POINT, POLYGON, etc.) in WGS84 projection.
+#' @param geometry The area of interest. See \code{geo2char} for inputs.
 #' @param publishedAfter \code{character}. Data published after: YYYY-MM-DD
 #' @param publishedBefore \code{character}. Data published before: YYYY-MM-DD
 #' @param startDate \code{character}. Sensing Date after: YYYY-MM-DD
@@ -43,7 +42,8 @@ composeUrl <- function(productType=c('FSC','RLIE','PSA','PSA-LAEA','ARLIE'), geo
   # dataset: request within ESA-DATASET.
   # sortParam: results are sorted according start date.
   # sortOrder: results are sorted in descending order (most recent first).
-  staticP <- paste('sortParam=startDate','sortOrder=descending','status=all','dataset=ESA-DATASET', sep='&')
+  staticP <- paste('sortParam=startDate','sortOrder=descending','status=all',
+                   'dataset=ESA-DATASET', sep='&')
 
   # if(!missing(queryURL))
   # {
@@ -56,9 +56,11 @@ composeUrl <- function(productType=c('FSC','RLIE','PSA','PSA-LAEA','ARLIE'), geo
     stop('"productType" must be one of: FSC, RLIE, PSA, PSA-LAEA, ARLIE')
   } else
   {
+    # this is a error on server side... will be removed here once its solved on 
+    # server side.
+    productType <- gsub(productType,pattern = 'PSA$', replacement = 'PSA_WGS84')
     productType <- paste0('productType=', productType,'&')
   }
-
   if(!missing(publishedAfter))
   {
     publishedAfter <- paste0('publishedAfter=',publishedAfter,'T3A00%3A00%3A00Z&')
@@ -111,22 +113,17 @@ composeUrl <- function(productType=c('FSC','RLIE','PSA','PSA-LAEA','ARLIE'), geo
 
   maxRecords <- paste0('maxRecords=', maxRecords,'&')
 
-  # if(!missing(geometry))
-  # {
-  #   
-  #   geometry <- paste0("geometry=",gsub(geometry, pattern = ' ', replacement = '+'), "&")
-  # } else
-  # {
-  #   geometry <- NULL
-  # }
-  
-  
-  #geometry=POLYGON((13.990623171919392+48.33851249150035%2C14.65623466020064+48.33851249150035%2C14.73610803879439+48.03230693902546%2C13.990623171919392+48.054557235193585%2C13.990623171919392+48.33851249150035))
-  #geometry=POINT(14.360037547915486+48.30531787964546)
-  # geometry=POINT(lon+lat)
+  if(!missing(geometry))
+  {
+    geometry <- geo2char(geometry)
+    geometry <- paste0("geometry=",geometry, "&")
+  } else
+  {
+    geometry <- NULL
+  }
   
   stat <- paste0(HRSIroot,'?',maxRecords)
-  url  <- paste0(stat,productIdentifier,startDate,completionDate, publishedAfter,publishedBefore,productType,q,staticP)
+  url  <- paste0(stat,productIdentifier,startDate,completionDate, publishedAfter,publishedBefore,productType,geometry,q,staticP)
 
-  return(url)
+return(url)
 }
