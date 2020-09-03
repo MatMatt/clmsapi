@@ -8,6 +8,7 @@ Authors@R: person("Matteo", "Mattiuzzi", email = "matteo@mattiuzzi.com", role = 
 Description: Download Copernicus Land Monitoring Service products by means of REST queries to the HTTP API server: <https://cryo.land.copernicus.eu/resto/api/collections/HRSI/search.json>. 
 Imports:
   rjson
+Suggests: sp, sf, raster
 License: CC BY 4.0
 Encoding: UTF-8
 LazyData: true
