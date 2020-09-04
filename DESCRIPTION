@@ -1,7 +1,7 @@
 Package: clmsapi
 Type: Package
 Title: Copernicus Land Monitoring Service API Client 
-Version: 0.1.0
+Version: 0.1.1
 URL: https://github.com/MatMatt/clmsapi
 BugReports: https://github.com/MatMatt/clmsapi/issues
 Authors@R: person("Matteo", "Mattiuzzi", email = "matteo@mattiuzzi.com", role = c("aut", "cre"))
