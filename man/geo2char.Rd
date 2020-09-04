@@ -7,7 +7,7 @@
 geo2char(x)
 }
 \arguments{
-\item{x}{one of the following classes: \code{Raster} \code{Extent}, \code{sf}
+\item{x}{one of the following classes: \code{Raster}, \code{Extent}, \code{sf},
 \code{map} or \code{sp}}
 }
 \value{

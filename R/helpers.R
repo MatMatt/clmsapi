@@ -42,7 +42,7 @@ checkZips <- function(x)
 #' R classes with a geographical extent information into the format as needed by the 
 #' 'geometry' parameter (see value). 
 #'
-#' @param x one of the following classes: \code{Raster} \code{Extent}, \code{sf}
+#' @param x one of the following classes: \code{Raster}, \code{Extent}, \code{sf},
 #' \code{map} or \code{sp}
 #'
 #' @return
@@ -74,9 +74,12 @@ geo2char = function(x)
     }
     x <- raster::extent(x)
   }
-  if(inherits(x = x, what = "Extent"))
+  # Extent has no CRS infomration, we must trust that it is correct...(+add a note in the Rd file)
+  if(inherits(x = x, what = "Extent")) 
   {
-    x <- sp::SpatialPoints(x)
+    # To avoid dependency to methods::as()
+    x <- sp::SpatialPolygons(list(Polygons(list(Polygon(x)), ID = 1)))
+    raster::crs(x) <- '+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0'
   }
   # ###################
   # # all terra::rast to a WGS84 extent the  to sp  
