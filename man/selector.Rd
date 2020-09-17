@@ -20,10 +20,12 @@ a data.frame}
 Extract file location information (sources and dests) from the API reply
 }
 \examples{
+\dontrun{
 x <- composeUrl(productType = 'FSC', productIdentifier = 'T29UNV')
 stopifnot(require(rjson))
 x <- fromJSON(file = x)
 selector(x)
+}
 
 }
 \author{
