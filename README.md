@@ -1,6 +1,6 @@
 # clmsapi
 
-[![CRAN_version](http://www.r-pkg.org/badges/version/clmsapi)](https://cran.r-project.org/package=clmsapi)
+[![CRAN_version](https://www.r-pkg.org/badges/version/clmsapi)](https://cran.r-project.org/package=clmsapi)
 [![CRAN_check](https://cranchecks.info/badges/worst/clmsapi)](https://cran.r-project.org/web/checks/check_results_clmsapi.html)
 [![GitHub](https://img.shields.io/badge/license-CC--BY%204.0-green)](https://creativecommons.org/licenses/by/4.0/deed.en)
 
@@ -10,15 +10,16 @@ R-Client for accessing the Copernicus Land Monitoring Service HTTP API on WEkEO 
 Before downloading any data you need to register [here](https://cryo.land.copernicus.eu/finder).  
 
 ## Other Data access possibilities:
-Web frontend for seach and download: https://cryo.land.copernicus.eu/finder  
-WMS webfrontend data viewer: https://cryo.land.copernicus.eu/browser  
+Web frontend for seach and download: https://cryo.land.copernicus.eu/finder/  
+WMS webfrontend data viewer: https://cryo.land.copernicus.eu/browser/
 WMS services:  
 •	https://cryo.land.copernicus.eu/wms/FSC/  
 •	https://cryo.land.copernicus.eu/wms/RLIE/  
 •	https://cryo.land.copernicus.eu/wms/PSA/  
 
 ## API Url: 
-https://cryo.land.copernicus.eu/resto/api/collections/HRSI/search.json
+https://cryo.land.copernicus.eu/resto/api/collections/HRSI/search.json  
+
 ## API reference: 
 https://cryo.land.copernicus.eu/resto/api/collections/HRSI/describe.xml
 
@@ -47,12 +48,12 @@ res
 
 ## Outlook
 **clmsapi** will remain a modular utility package and most probably not go as far as covering any raster processing functionalities.
-Currently operativ on WEKEO is only the **High Resolution Snow and Ice part 1** ([HR-S&I](https://land.copernicus.eu/pan-european/biophysical-parameters/high-resolution-snow-and-ice-monitoring)). In 2021 two more product will commence on WEkEO, (1) the **High Resolution Vegetation Phenology and Productivity** ([HR-VPP](https://land.copernicus.eu/user-corner/technical-library/phenology)) and (2) the second part of **HR-S&I**. Products will be gradually added to **clmsapi** as they become avialable on WEkEO. 
+Currently operativ on WEKEO is only the **High Resolution Snow and Ice part 1** ([HR-S&I](https://land.copernicus.eu/pan-european/biophysical-parameters/high-resolution-snow-and-ice-monitoring)). In 2021 two more product will commence on WEkEO, (1) the **High Resolution Vegetation Phenology and Productivity** ([HR-VPP](https://land.copernicus.eu/pan-european/biophysical-parameters/high-resolution-vegetation-phenology-and-productivity)) and (2) the second part of **HR-S&I**. Products will be gradually added to **clmsapi** as they become avialable on WEkEO. 
 
 The main part covered by this package will remain the connection to the API, and the personal local data mirrow. You will be able to ask for the products you need, and **clmsapi** will give you back a ```character``` string with path- and filename of the requested files. This covers (1) API call (works), (2) check the availability and integrity of local files (works), (3) structured download of needed files (a bit hardcoded but works), (4) unzip (todo). Further to be imporved are some comfort functionality, so to allow better translation from R spatial objects (extent information) into API paramter 'geometry'. 
 
 ## Legal notice about Copernicus Data:
-Access to data is based on a principle of full, open and free access as established by the Copernicus data and information policy Regulation (EU) No 1159/2013 of 12 July 2013. This regulation establishes registration and licensing conditions for GMES/Copernicus users and can be found here: http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32013R1159.  
+Access to data is based on a principle of full, open and free access as established by the Copernicus data and information policy Regulation (EU) No 1159/2013 of 12 July 2013. This regulation establishes registration and licensing conditions for GMES/Copernicus users and can be found here: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32013R1159.  
 
 Free, full and open access to this data set is made on the conditions that:  
 1. When distributing or communicating Copernicus dedicated data and Copernicus service information to the public, users shall inform the public of the source of that data and information.  
