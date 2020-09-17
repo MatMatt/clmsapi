@@ -15,10 +15,12 @@
 #' Matteo Mattiuzzi
 #'
 #' @examples
+#' \dontrun{
 #' x <- composeUrl(productType = 'FSC', productIdentifier = 'T29UNV')
 #' stopifnot(require(rjson))
 #' x <- fromJSON(file = x)
 #' selector(x)
+#'}
 #'
 #' @export selector
 #' @name selector
