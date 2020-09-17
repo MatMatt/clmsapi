@@ -78,7 +78,7 @@ geo2char = function(x)
   if(inherits(x = x, what = "Extent")) 
   {
     # To avoid dependency to methods::as()
-    x <- sp::SpatialPolygons(list(Polygons(list(Polygon(x)), ID = 1)))
+    x <- sp::SpatialPolygons(list(sp::Polygons(list(sp::Polygon(x)), ID = 1)))
     raster::crs(x) <- '+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0'
   }
   # ###################
