@@ -7,7 +7,7 @@
 R-Client for accessing the Copernicus Land Monitoring Service HTTP API on WEkEO by means of REST calls. Currenty supported (on server side) are only Data from the [High Resolution Snow and Ice Monitoring](https://land.copernicus.eu/pan-european/biophysical-parameters/high-resolution-snow-and-ice-monitoring).
 
 ## Registration:
-Before downloading any data you need to register [here](https://cryo.land.copernicus.eu/finder).  
+Before downloading any data you need to register [here](https://cryo.land.copernicus.eu/finder/).  
 
 ## Other Data access possibilities:
 Web frontend for seach and download: https://cryo.land.copernicus.eu/finder/  
@@ -61,7 +61,3 @@ Free, full and open access to this data set is made on the conditions that:
 3. Where that data or information has been adapted or modified, the user shall clearly state this.  
 4. The data remain the sole property of the European Union. Any information and data produced in the framework of the action shall be the sole property of the European Union. Any communication and publication by the beneficiary shall acknowledge that the data were produced “with funding by the European Union”.  
 
-## Package downloads (CRAN)
-This month      | In total
---------------- | -----------
-![month](https://cranlogs.r-pkg.org/badges/clmsapi) | ![total](https://cranlogs.r-pkg.org/badges/clmsapi)
