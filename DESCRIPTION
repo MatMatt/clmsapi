@@ -5,7 +5,7 @@ Version: 0.1.1
 URL: https://github.com/MatMatt/clmsapi
 BugReports: https://github.com/MatMatt/clmsapi/issues
 Authors@R: person("Matteo", "Mattiuzzi", email = "matteo@mattiuzzi.com", role = c("aut", "cre"))
-Description: Download Copernicus Land Monitoring Service products by means of REST queries to the HTTP API server: <https://cryo.land.copernicus.eu/resto/api/collections/HRSI/search.json>. 
+Description: Client for accessing Copernicus Land Monitoring Service products (CLMS, <https://land.copernicus.eu/>). CLMS is funded by the European Commission and provides geographical information on land cover and its changes, land use, vegetation state, water cycle and earth surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications. 'clmsapi' currently only supports the cryosphere product HR-S&I (<https://land.copernicus.eu/pan-european/biophysical-parameters/high-resolution-snow-and-ice-monitoring>). With 'clmsapi' you can select products by means of temporal and spatial criteria (e.g. using spatial R-objects from packages 'sf', 'sp', 'raster') and provides file download functionalities and some file integrated storage mechanisms (e.g. folder structure for downloaded files, file integrity and duplicate checks). 'clmsapi' is simple and essential in its use and in its capabilities.
 Imports:
   rjson
 Suggests: sp, sf, raster

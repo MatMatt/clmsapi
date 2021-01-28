@@ -117,63 +117,117 @@ geo2char = function(x)
 return(x)
 }
 
+getExtension <- function(x)
+{
+  x <- basename(x)  
+  
+  for(i in seq_along(x))
+  {
+    xx <- strsplit(x[i],split = '\\.')[[1]]
+    x[i] <- xx[length(xx)]
+  }
+  return(x)
+}
 
-# extractDate <- function(x, unique = FALSE, as.POSIXlt=TRUE)
-# {
-#   x <- extractFilename(x)
-#   for (i in 1:length(x))
-#   { # i=1
-#     x[i] <- strsplit(x[i],split = '_')[[1]][2]
-#   }
-#   if(unique)
-#   {
-#     x <- unique(x)
-#   }
-#   if(as.POSIXlt)
-#   {
-#     x <- as.POSIXlt(x, format =  "%Y%m%dT%H%M%S") # as.POSIXlt("2012-04-12T19:02:32Z", format="%Y-%m-%dT%H:%M:%SZ")
-#   }
-#   return(x)
-# }
-# isTif <- function(x)
-# {
-#   ext <- raster::extension(x)
-#   return(ext == '.tif')
-# }
-#
-# extractFilename <- function(x)
-# {
-#   if(!is.null(dim(x)))
-#   {
-#     x <- x[,1]
-#   }
-#
-#   for (i in 1:length(x))
-#   { # i=1
-#     if(isTif(x[i]))
-#     {
-#       x[i] <- basename(x[i])
-#     } else
-#     {
-#       x[i] <- strsplit(as.character(x[i]),';')[[1]][2]
-#     }
-#   }
-#   return(x)
-# }
-#
-# extractTiles <- function(x, unique = FALSE)
-# {
-#   x <- getFilename(x)
-#   for (i in 1:length(x))
-#   { # i=1
-#     x[i] <- strsplit(x[i],split = '_')[[1]][4]
-#   }
-#
-#   if(isTRUE(unique))
-#   {
-#     x <- unique(x)
-#   }
-#   return(x)
-# }
-#
+#' Extracts the date from the filename
+#' @description
+#' Extract the date in the filename and converts it into a POSIX object.  
+#'
+#' @param x filename
+#' @param split argument to isolate the date information default \code{'_'} 
+#' @param position \code{numeric} default 2. Set the position of the date after 
+#' the \code{split} was applied 
+#'
+#' @return
+#' If \code{as.POSIXlt == FALSE} a \code{character} string with the extracted date part
+#'
+#' @author
+#' Matteo Mattiuzzi
+#'
+#' @export extractFromName
+#' @name extractFromName
+
+extractFromName <- function(x, split = '_', position=2)
+{
+  x <- basename(x)
+  for (i in seq_along(x))
+  { # i=1
+    x[i] <- strsplit(x[i], split = split)[[1]][position]
+  }
+  return(x)
+}
+
+#' Extracts the date from the filename
+#' @description
+#' Extract the date in the filename and converts it into a POSIX object.  
+#'
+#' @param x filename
+#' @param split argument to isolate the date information default \code{'_'} 
+#' @param position \code{numeric} default 2. Set the position of the date after 
+#' the \code{split} was applied 
+#' @param as.POSIXlt default \code{TRUE}
+#'
+#' @return
+#' If \code{as.POSIXlt == FALSE} a \code{character} string with the extracted date part
+#' If \code{as.POSIXlt == TRUE} a sting of POSIXlt objects string.
+#'
+#' @author
+#' Matteo Mattiuzzi
+#'
+#' @export extractDate
+#' @name extractDate
+
+extractDate <- function(x, split = '_', position=2, as.POSIXlt=TRUE)
+{
+  x <- extractFromName(x,split = split, position = position)
+
+  if(as.POSIXlt)
+  {
+    x <- as.POSIXlt(x, format =  "%Y%m%dT%H%M%S") # as.POSIXlt("2012-04-12T19:02:32Z", format="%Y-%m-%dT%H:%M:%SZ")
+  }
+  
+  return(x)
+}
+
+tileName <- function(x, split = '_', position=4)
+{
+  x <- basename(x)
+  for (i in seq_along(x))
+  { # i=1
+    x[i] <- strsplit(x[i],split = split)[[1]][position]
+  }
+
+  return(x)
+}
+
+#' Basic wrapper around utils::unzip to allow unzippping of mutiple files.
+#' @description
+#' This function allows to unzip a verctor of zip files at once. 
+#'
+#' @param zipfile vector containing path to zipfiles 
+#' @param exdir default \code{dirname(zipdir)}
+#'
+#' @return
+#' \code{character} string with \code{exdir} pathnames.
+#'
+#' @author
+#' Matteo Mattiuzzi
+#'
+#' @export listUnzip
+#' @name listUnzip
+
+listUnzip <- function(zipfile, exdir)
+{
+  
+  if(missing(exdir))
+  {
+    exdir <- dirname(zipfile)
+  }
+  
+  for(i in seq_along(zipfile))
+  { 
+    exdir[i] <- unique(dirname(utils::unzip(zipfile = zipfile[i], exdir = exdir[i])))
+  }
+return(exdir)
+}
 

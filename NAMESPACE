@@ -3,5 +3,7 @@
 export(checkZips)
 export(composeUrl)
 export(downloader)
+export(extractDate)
 export(geo2char)
+export(listUnzip)
 export(selector)

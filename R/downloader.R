@@ -26,7 +26,7 @@
 #' if(require(rjson)){
 #' x <- fromJSON(file = x)
 #' x <- selector(x)
-#' downloader(x, user='yourUser', password='yourPassword')
+#' downloader(x, user='yourUser', password='yourPassword',rootDir=tempdir())
 #' }
 #' }
 #'
@@ -38,39 +38,50 @@ downloader <- function(x , rootDir='./', user, password)
 
   dest   <- paste0(rootDir, x$localZip)
   exists <- checkZips(dest)
-
-  if(sum(exists)!=length(exists)) # do auth and get Token only if download is needed
+  
+  while(sum(exists)!=length(exists)) # do auth and get Token only if download is needed
   {
-    if(missing(user))
-    {
-      stop('"user" is missing! If not registered yet, you can do that here: https://cryo.land.copernicus.eu/finder/')
-    }
-    if(missing(password))
-    {
-      stop('"password" is missing! If not registered yet, you can do that here: https://cryo.land.copernicus.eu/finder/')
-    }
-    
+    token <- token(user = user, password = password)
     cmdcurl <- Sys.which('curl')[[1]]
     
-    # I have my doubts that the handling of the token is properly done here.
-    # But so far it seems to work...
-    token <- system(paste0(cmdcurl,' -s -d client_id=PUBLIC -d username=',user,' -d password=',password,' -d grant_type=password https://cryo.land.copernicus.eu/auth/realms/cryo/protocol/openid-connect/token'),intern = TRUE)
-    
-    if(length(grep(token, pattern = 'error'))!=0)
-    {
-      stop('An Authentification error occured, please check your credentials for https://cryo.land.copernicus.eu/finder/.')
-    }
-    
-    token <- strsplit(token,split = '\"')[[1]][4]
-  
     for(i in seq_along(dest[!exists]))
     { # i=1
       dir.create(dirname(dest[!exists][i]), showWarnings = FALSE, recursive = TRUE)
       url <- paste0(x$downloadUrl[!exists][i],'?token=', token)
       cat(dest[!exists][i],'\n')
       system(paste(cmdcurl, url, "-o", path.expand(dest[!exists][i])))
+      if(file.size(path.expand(dest[!exists][i])) < 0.9*x$fileSize[!exists][i])# If downloaded file is smaller than 90% of the expected size restart download.
+      {
+        break # break for i loop and one level up into the while loop
+      }
     }
+    exists <- checkZips(dest) # check which files need to be donwloaded
   }
 return(dest)
 }
 
+token <- function(user, password)
+{
+  if(missing(user))
+  {
+    stop('"user" is missing! If not registered yet, you can do that here: https://cryo.land.copernicus.eu/finder/')
+  }
+  if(missing(password))
+  {
+    stop('"password" is missing! If not registered yet, you can do that here: https://cryo.land.copernicus.eu/finder/')
+  }
+  
+  cmdcurl <- Sys.which('curl')[[1]]
+  
+  # I have my doubts that the handling of the token is properly done here.
+  # But so far it seems to work...
+  token <- system(paste0(cmdcurl,' -s -d client_id=PUBLIC -d username=',user,' -d password=',password,' -d grant_type=password https://cryo.land.copernicus.eu/auth/realms/cryo/protocol/openid-connect/token'),intern = TRUE)
+  
+  if(length(grep(token, pattern = 'error'))!=0)
+  {
+    stop('Authentification error, please check your credentials for https://cryo.land.copernicus.eu/finder/.')
+  }
+  
+  token <- strsplit(token,split = '\"')[[1]][4]
+  return(token)
+}

@@ -1,9 +1,5 @@
 # clmsapi
 
-[![CRAN_version](https://www.r-pkg.org/badges/version/clmsapi)](https://cran.r-project.org/package=clmsapi)
-[![CRAN_check](https://cranchecks.info/badges/worst/clmsapi)](https://cran.r-project.org/web/checks/check_results_clmsapi.html)
-[![GitHub](https://img.shields.io/badge/license-CC--BY%204.0-green)](https://creativecommons.org/licenses/by/4.0/deed.en)
-
 R-Client for accessing the Copernicus Land Monitoring Service HTTP API on WEkEO by means of REST calls. Currenty supported (on server side) are only Data from the [High Resolution Snow and Ice Monitoring](https://land.copernicus.eu/pan-european/biophysical-parameters/high-resolution-snow-and-ice-monitoring).
 
 ## Registration:
