@@ -23,11 +23,8 @@
 #' \dontrun{
 #' x <- composeUrl(productType = 'FSC', productIdentifier = 'T29UNV',
 #' startDate='2020-07-01', completionDate='2020-07-31')
-#' if(require(rjson)){
-#' x <- fromJSON(file = x)
 #' x <- selector(x)
 #' downloader(x, user='yourUser', password='yourPassword',rootDir=tempdir())
-#' }
 #' }
 #'
 #' @export downloader
