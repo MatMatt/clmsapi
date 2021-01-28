@@ -34,9 +34,6 @@ devtools::install_github("MatMatt/clmsapi", ref = "master")
 ## Currently working is: 
 ```S
 x <- composeUrl(productType = 'FSC', productIdentifier = 'T29UNV', startDate='2020-07-01', completionDate=Sys.Date())
-
-require(rjson)  
-x <- fromJSON(file = x)  
 x <- selector(x)  
 res <- downloader(x, user='yourUser', password='yourPassword')  
 res  
