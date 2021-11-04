@@ -3,7 +3,7 @@
 #' @description
 #' This function compiles REST query (URL) that can be submitted to the server.
 #'
-#' @param productType \code{character}. One of: FSC, RLIE, PSA, PSA-LAEA, ARLIE
+#' @param productType \code{character}. One of: FSC, RLIE, PSA, PSA_LAEA, ARLIE
 #' @param productIdentifier \code{character}. Find products using elements of the
 #' filename: FSC_20170913T114531_S2B_T29UNV_V001_0: e.g. FSC_2020, TileID, etc.
 #' (its not regex though)
@@ -29,7 +29,7 @@
 #' @name composeUrl
 
 
-composeUrl <- function(productType=c('FSC','RLIE','PSA','PSA-LAEA','ARLIE'), geometry, publishedAfter, publishedBefore, startDate, completionDate, productIdentifier, cloudCover=100, textualSearch, maxRecords = 1000)
+composeUrl <- function(productType=c('FSC','RLIE','PSA','PSA_LAEA','ARLIE'), geometry, publishedAfter, publishedBefore, startDate, completionDate, productIdentifier, cloudCover=100, textualSearch, maxRecords = 1000)
 {
 
   
@@ -51,9 +51,9 @@ composeUrl <- function(productType=c('FSC','RLIE','PSA','PSA-LAEA','ARLIE'), geo
   # }
 
   productType <- toupper(productType)
-  if(sum(productType == c('FSC','RLIE','PSA','PSA-LAEA','ARLIE'))!=1)
+  if(sum(productType == c('FSC','RLIE','PSA','PSA_LAEA','ARLIE'))!=1)
   {
-    stop('"productType" must be one of: FSC, RLIE, PSA, PSA-LAEA, ARLIE')
+    stop('"productType" must be one of: FSC, RLIE, PSA, PSA_LAEA, ARLIE')
   } else
   {
     # this is a error on server side... will be removed here once its solved on 
