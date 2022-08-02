@@ -7,12 +7,13 @@ Before downloading any data using the clmsapi, you need to register [here](https
 
 ## Other Data access possibilities:
 Web frontend for seach and download: https://cryo.land.copernicus.eu/finder/  
+WEkEO catalogue (will gradually become the standard) https://www.wekeo.eu/data?view=catalogue  
 WMS services:  
 •	https://cryo.land.copernicus.eu/wms/FSC/  
 •	https://cryo.land.copernicus.eu/wms/RLIE/  
 •	https://cryo.land.copernicus.eu/wms/PSA/  
-•	https://cryo.land.copernicus.eu/wms/GFSC/
-•	https://cryo.land.copernicus.eu/wms/WDS/
+•	https://cryo.land.copernicus.eu/wms/GFSC/  
+•	https://cryo.land.copernicus.eu/wms/WDS/  
 •	https://cryo.land.copernicus.eu/wms/SWS/  
 
 ## API Url: 
