@@ -18,21 +18,24 @@
 
 checkZips <- function(x)
 {
-  cmdunzip <- Sys.which("unzip")
-
   out <- exists <- file.exists(x)
 
-  # for all that exist do the test.
-  for (j in seq_along(x[exists]))
-  { # j=1
-    res <- system(paste0(cmdunzip,' -t ', x[exists][j]), intern = TRUE)
-    res <- res[length(res)]
-
-    if (length(grep(res, pattern = 'No errors detected'))==0)
-    {
-      out[exists][j] <- FALSE
+  if(.Platform$OS.typ== "unix")
+  {
+    cmdunzip <- Sys.which("unzip")
+  
+    # for all that exist do the test.
+    for (j in seq_along(x[exists]))
+    { # j=1
+      res <- system(paste0(cmdunzip,' -t ', x[exists][j]), intern = TRUE)
+      res <- res[length(res)]
+  
+      if (length(grep(res, pattern = 'No errors detected'))==0)
+      {
+        out[exists][j] <- FALSE
+      }
     }
-  }
+  } 
   return(out)
 }
 

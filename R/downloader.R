@@ -32,10 +32,10 @@
 
 downloader <- function(x , rootDir='./', user, password)
 {
+  rootDir <- normalizePath(rootDir, winslash = '/')
+  dest   <- paste0(rootDir, '/', x$localZip)
+  exists <- checkZips(dest) 
 
-  dest   <- paste0(rootDir, x$localZip)
-  exists <- checkZips(dest)
-  
   while(sum(exists)!=length(exists)) # do auth and get Token only if download is needed
   {
     token <- token(user = user, password = password)
@@ -52,7 +52,7 @@ downloader <- function(x , rootDir='./', user, password)
         break # break for i loop and one level up into the while loop
       }
     }
-    exists <- checkZips(dest) # check which files need to be donwloaded
+    exists <- checkZips(dest) # check which files need to be downloaded
   }
 return(dest)
 }
