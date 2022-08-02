@@ -29,7 +29,7 @@
 #' @name composeUrl
 
 
-composeUrl <- function(productType=c('FSC','RLIE','SWS', 'WDS', 'PSA','PSA_LAEA','ARLIE'), geometry, publishedAfter, publishedBefore, startDate, completionDate, productIdentifier, cloudCover=100, textualSearch, maxRecords = 1000)
+composeUrl <- function(productType=c('FSC','GFSC', 'RLIE','SWS', 'WDS', 'PSA','PSA_LAEA','ARLIE'), geometry, publishedAfter, publishedBefore, startDate, completionDate, productIdentifier, cloudCover=100, textualSearch, maxRecords = 1000)
 {
 
   # Request URL root
@@ -50,7 +50,7 @@ composeUrl <- function(productType=c('FSC','RLIE','SWS', 'WDS', 'PSA','PSA_LAEA'
   # }
 
   productType <- toupper(productType)
-  if(sum(productType == c('FSC','RLIE','SWS', 'WDS', 'PSA','PSA_LAEA','ARLIE'))!=1)
+  if(sum(productType == c('FSC','GFSC', 'RLIE','SWS', 'WDS', 'PSA','PSA_LAEA','ARLIE'))!=1)
   {
     stop('"productType" must be one of: FSC, GFSC, SWS, WDS, RLIE, PSA, PSA_LAEA, ARLIE')
   } else
