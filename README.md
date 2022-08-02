@@ -1,17 +1,19 @@
 # clmsapi
 
-R-Client for accessing the Copernicus Land Monitoring Service HTTP API on WEkEO by means of REST calls. Currently supported (on server side) are only Data from the [High Resolution Snow and Ice Monitoring](https://land.copernicus.eu/pan-european/biophysical-parameters/high-resolution-snow-and-ice-monitoring).
+R-Client for accessing the Copernicus Land Monitoring Service HTTP API on WEkEO by means of REST calls. Currently supported are only data from the [High Resolution Snow and Ice Monitoring](https://land.copernicus.eu/pan-european/biophysical-parameters/high-resolution-snow-and-ice-monitoring).
 
 ## Registration:
-Before downloading any data you need to register [here](https://cryo.land.copernicus.eu/finder/).  
+Before downloading any data using the clmsapi, you need to register [here](https://cryo.land.copernicus.eu/finder/).
 
 ## Other Data access possibilities:
 Web frontend for seach and download: https://cryo.land.copernicus.eu/finder/  
-WMS webfrontend data viewer: https://cryo.land.copernicus.eu/browser/
 WMS services:  
 •	https://cryo.land.copernicus.eu/wms/FSC/  
 •	https://cryo.land.copernicus.eu/wms/RLIE/  
 •	https://cryo.land.copernicus.eu/wms/PSA/  
+•	https://cryo.land.copernicus.eu/wms/GFSC/
+•	https://cryo.land.copernicus.eu/wms/WDS/
+•	https://cryo.land.copernicus.eu/wms/SWS/  
 
 ## API Url: 
 https://cryo.land.copernicus.eu/resto/api/collections/HRSI/search.json  
@@ -41,7 +43,7 @@ res
 
 ## Outlook
 **clmsapi** will remain a modular utility package and most probably not go as far as covering any raster processing functionalities.
-Currently operativ on WEKEO is only the **High Resolution Snow and Ice** ([HR-S&I](https://land.copernicus.eu/pan-european/biophysical-parameters/high-resolution-snow-and-ice-monitoring)). In 2021 two more product will commence on WEkEO, (1) the **High Resolution Vegetation Phenology and Productivity** ([HR-VPP](https://land.copernicus.eu/pan-european/biophysical-parameters/high-resolution-vegetation-phenology-and-productivity)). Products will be gradually added to **clmsapi** as they become avialable on WEkEO (and time permitting!). 
+Currently operativ on WEkEO is only the **High Resolution Snow and Ice** ([HR-S&I](https://land.copernicus.eu/pan-european/biophysical-parameters/high-resolution-snow-and-ice-monitoring)). In 2021 two more product will commence on WEkEO, (1) the **High Resolution Vegetation Phenology and Productivity** ([HR-VPP](https://land.copernicus.eu/pan-european/biophysical-parameters/high-resolution-vegetation-phenology-and-productivity)). Products might be gradually added to **clmsapi** as they become avialable on WEkEO (and my time permitting!). 
 
 The main part covered by this package will remain the connection to the API, and the personal local data mirrow. You will be able to ask for the products you need, and **clmsapi** will give you back a ```character``` string with path- and filename of the requested files. This covers (1) API call (works), (2) check the availability and integrity of local files (works), (3) structured download of needed files (a bit hardcoded but works), (4) unzip (todo). Further to be imporved are some comfort functionality, so to allow better translation from R spatial objects (extent information) into API paramter 'geometry'. 
 
