@@ -32,7 +32,14 @@
 
 downloader <- function(x , rootDir='./', user, password)
 {
+  if(is.null(x$localZip))
+  {
+    stop("x does not contain any files")
+  }
+  
   rootDir <- normalizePath(rootDir, winslash = '/')
+  dir.create(rootDir,showWarnings = FALSE,recursive = TRUE)
+  
   dest   <- paste0(rootDir, '/', x$localZip)
   exists <- checkZips(dest) 
 
