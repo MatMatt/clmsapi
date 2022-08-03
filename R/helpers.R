@@ -132,17 +132,16 @@ getExtension <- function(x)
   return(x)
 }
 
-#' Extracts the date from the filename
+#' Isolate an element from a filename
 #' @description
-#' Extract the date in the filename and converts it into a POSIX object.  
+#' Isolate an element from a vector of filenames (mostly an internal function).   
 #'
-#' @param x filename
-#' @param split argument to isolate the date information default \code{'_'} 
-#' @param position \code{numeric} default 2. Set the position of the date after 
-#' the \code{split} was applied 
+#' @param x filename(s)
+#' @param split set name splitting character \code{'_'} 
+#' @param position \code{numeric} default 2. Set the position of the element to be extreacted 
 #'
 #' @return
-#' If \code{as.POSIXlt == FALSE} a \code{character} string with the extracted date part
+#' \code{character} string with the extracted name element
 #'
 #' @author
 #' Matteo Mattiuzzi
@@ -165,14 +164,13 @@ extractFromName <- function(x, split = '_', position=2)
 #' Extract the date in the filename and converts it into a POSIX object.  
 #'
 #' @param x filename
-#' @param split argument to isolate the date information default \code{'_'} 
+#' @param split argument to isolate the date information. default \code{'_'} 
 #' @param position \code{numeric} default 2. Set the position of the date after 
 #' the \code{split} was applied 
-#' @param as.POSIXlt default \code{TRUE}
+#' @param format argument passed to \code{as.POSIXlt}. default \code{"%Y%m%dT%H%M%S"}
 #'
 #' @return
-#' If \code{as.POSIXlt == FALSE} a \code{character} string with the extracted date part
-#' If \code{as.POSIXlt == TRUE} a sting of POSIXlt objects string.
+#' POSIXlt objects string.
 #'
 #' @author
 #' Matteo Mattiuzzi
@@ -180,14 +178,10 @@ extractFromName <- function(x, split = '_', position=2)
 #' @export extractDate
 #' @name extractDate
 
-extractDate <- function(x, split = '_', position=2, as.POSIXlt=TRUE)
+extractDate <- function(x, split = '_', position=2, format= "%Y%m%dT%H%M%S")
 {
   x <- extractFromName(x,split = split, position = position)
-
-  if(as.POSIXlt)
-  {
-    x <- as.POSIXlt(x, format =  "%Y%m%dT%H%M%S") # as.POSIXlt("2012-04-12T19:02:32Z", format="%Y-%m-%dT%H:%M:%SZ")
-  }
+  x <- as.POSIXlt(x, format =  format) # as.POSIXlt("2012-04-12T19:02:32Z", format="%Y-%m-%dT%H:%M:%SZ")
   
   return(x)
 }

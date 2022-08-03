@@ -6,7 +6,7 @@
 #' @param productType \code{character}. One of: FSC, GFSC, SWS, WDS, RLIE, PSA, PSA_LAEA, ARLIE
 #' @param productIdentifier \code{character}. Find products using elements of the
 #' filename: FSC_20170913T114531_S2B_T29UNV_V001_0: e.g. FSC_2020, TileID, etc.
-#' (its not regex though)
+#' (its not regex thought)
 #' @param geometry The area of interest. See \code{geo2char} for inputs.
 #' @param publishedAfter \code{character}. Data published after: YYYY-MM-DD
 #' @param publishedBefore \code{character}. Data published before: YYYY-MM-DD
