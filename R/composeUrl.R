@@ -42,6 +42,7 @@ composeUrl <- function(productType=c('FSC','GFSC', 'RLIE','SWS', 'WDS', 'PSA','P
   # sortParam: results are sorted according start date.
   # sortOrder: results are sorted in descending order (most recent first).
   
+  
   staticP <- paste('sortParam=startDate','sortOrder=descending','status=all',
                    'dataset=ESA-DATASET', sep='&')
 
