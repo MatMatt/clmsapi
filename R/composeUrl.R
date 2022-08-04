@@ -35,8 +35,6 @@ composeUrl <- function(productType=c('FSC','GFSC', 'RLIE','SWS', 'WDS', 'PSA','P
   # Request URL root
   HRSIroot = 'https://cryo.land.copernicus.eu/resto/api/collections/HRSI/search.json'
   
-  # 'https://wekeo-broker.apps.mercator.dpi.wekeo.eu'
-  
   # Static URL parameters.
   # status all: request all processed products
   # maxRecords: request n products per page.
@@ -45,11 +43,6 @@ composeUrl <- function(productType=c('FSC','GFSC', 'RLIE','SWS', 'WDS', 'PSA','P
   # sortOrder: results are sorted in descending order (most recent first).
   staticP <- paste('sortParam=startDate','sortOrder=descending','status=all',
                    'dataset=ESA-DATASET', sep='&')
-
-  # if(!missing(queryURL))
-  # {
-  #   return(queryURL)
-  # }
 
   productType <- toupper(productType)
   if(sum(productType == c('FSC','GFSC', 'RLIE','SWS', 'WDS', 'PSA','PSA_LAEA','ARLIE'))!=1)
