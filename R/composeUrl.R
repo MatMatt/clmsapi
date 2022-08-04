@@ -35,6 +35,7 @@ composeUrl <- function(productType=c('FSC','GFSC', 'RLIE','SWS', 'WDS', 'PSA','P
   # Request URL root
   HRSIroot = 'https://cryo.land.copernicus.eu/resto/api/collections/HRSI/search.json'
   
+  
   # Static URL parameters.
   # status all: request all processed products
   # maxRecords: request n products per page.
