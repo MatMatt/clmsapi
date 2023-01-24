@@ -24,7 +24,7 @@ https://cryo.land.copernicus.eu/resto/api/collections/HRSI/describe.xml
 
 ## Package maturity note 
 **The package is not at all mature, changes in methods and names are to be expected!**   
-**So far tested only on Linux and on Windows**
+**So far tested only on Linux and on Windows.**
 
 ## Installation
 To install from GitHub, first install **[devtools](https://cran.r-project.org/package=devtools)** and subsequently run
